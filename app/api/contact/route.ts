@@ -1,7 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Initialize Resend lazily to avoid build-time errors
+let resend: Resend | null = null
+
+function getResend() {
+  if (!resend) {
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      throw new Error('RESEND_API_KEY environment variable is not set')
+    }
+    resend = new Resend(apiKey)
+  }
+  return resend
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -43,7 +55,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Send email via Resend
-    const { data, error } = await resend.emails.send({
+    const resendClient = getResend()
+    const { data, error } = await resendClient.emails.send({
       from: "Mitch's Soccer NEXT <onboarding@resend.dev>", // Using Resend test domain until mitchssoccer.com is verified
       to: process.env.CONTACT_EMAIL || 'info@mitchssoccer.com',
       replyTo: email,
