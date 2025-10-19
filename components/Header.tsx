@@ -27,8 +27,8 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-black/98 border-b border-gray-800 shadow-lg h-16'
-          : 'bg-dark-900/95 backdrop-blur-xl border-b border-gray-700 shadow-md h-20'
+          ? 'bg-dark-900 border-b border-gray-800 shadow-lg h-16'
+          : 'bg-dark-900 border-b border-gray-800 shadow-md h-20'
       }`}
     >
       <div className="container-custom h-full">

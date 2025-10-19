@@ -22,12 +22,13 @@ module.exports = {
           500: '#A855F7',
           600: '#9333EA',
         },
-        // Neon Colors
-        'neon-purple': '#BF40BF',
-        'neon-purple-bright': '#E040FB',
-        'neon-green': '#00FF7F',
-        'neon-green-bright': '#39FF14',
-        'lime-electric': '#CCFF00',
+        // Professional Accent Colors
+        accent: {
+          purple: '#A855F7',
+          'purple-dark': '#9333EA',
+          green: '#10B981',
+          blue: '#3B82F6',
+        },
         // Keep original colors for compatibility
         purple: {
           50: '#F5E8FF',
@@ -58,8 +59,8 @@ module.exports = {
           100: '#F5F5F5',
           200: '#E5E5E5',
           300: '#D4D4D4',
-          400: '#A3A3A3',
-          500: '#737373',
+          400: '#9CA3AF', // Improved contrast from #A3A3A3
+          500: '#6B7280', // Better mid-tone
           600: '#52525B',
           700: '#3F3F46',
           800: '#27272A',
@@ -71,10 +72,15 @@ module.exports = {
         display: ['Outfit', 'system-ui', '-apple-system', 'sans-serif'],
       },
       fontSize: {
-        'display-xl': ['3.5rem', { lineHeight: '1.1', fontWeight: '800' }],
-        'display-lg': ['2.5rem', { lineHeight: '1.2', fontWeight: '700' }],
-        'display-md': ['2rem', { lineHeight: '1.3', fontWeight: '700' }],
-        'display-sm': ['1.5rem', { lineHeight: '1.4', fontWeight: '600' }],
+        // Enhanced typography scale for better hierarchy
+        'display-2xl': ['4.5rem', { lineHeight: '1', fontWeight: '800', letterSpacing: '-0.04em' }],
+        'display-xl': ['3.75rem', { lineHeight: '1.1', fontWeight: '800', letterSpacing: '-0.03em' }],
+        'display-lg': ['3rem', { lineHeight: '1.1', fontWeight: '700', letterSpacing: '-0.02em' }],
+        'display-md': ['2.25rem', { lineHeight: '1.2', fontWeight: '700', letterSpacing: '-0.02em' }],
+        'display-sm': ['1.875rem', { lineHeight: '1.25', fontWeight: '600', letterSpacing: '-0.01em' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.75' }],
+        'body-md': ['1rem', { lineHeight: '1.75' }],
+        'body-sm': ['0.875rem', { lineHeight: '1.5' }],
       },
       spacing: {
         '18': '4.5rem',
@@ -94,10 +100,16 @@ module.exports = {
         'purple-hover': '0 6px 20px 0 rgba(147, 51, 234, 0.3)',
       },
       backgroundImage: {
-        'gradient-purple-electric': 'linear-gradient(135deg, #BF40BF 0%, #A855F7 50%, #9333EA 100%)',
-        'gradient-green-electric': 'linear-gradient(135deg, #00FF7F 0%, #22C55E 100%)',
-        'gradient-dark-radial': 'radial-gradient(ellipse at top, #1A0033 0%, #000000 50%, #000000 100%)',
-        'gradient-hero-overlay': 'linear-gradient(135deg, rgba(191, 64, 191, 0.6) 0%, rgba(147, 51, 234, 0.4) 30%, rgba(0, 0, 0, 0.9) 100%)',
+        // Primary gradients with refined intensity
+        'gradient-purple-electric': 'linear-gradient(135deg, #9333EA 0%, #A855F7 100%)',
+        'gradient-purple-vibrant': 'linear-gradient(135deg, #BF40BF 0%, #9333EA 100%)',
+        'gradient-green-electric': 'linear-gradient(135deg, #00FF7F 0%, #10B981 100%)',
+        // Subtle background gradients
+        'gradient-dark-radial': 'radial-gradient(ellipse at top, rgba(147, 51, 234, 0.05) 0%, #000000 50%)',
+        'gradient-dark-subtle': 'linear-gradient(180deg, #0A0A0A 0%, #121212 100%)',
+        // Overlay gradients with reduced opacity
+        'gradient-hero-overlay': 'linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(147, 51, 234, 0.15) 30%, rgba(0, 0, 0, 0.95) 100%)',
+        'gradient-card-overlay': 'linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, transparent 100%)',
       },
       animation: {
         'fade-up': 'fadeUp 0.6s ease-out',

@@ -10,56 +10,87 @@
   }
 
   body {
-    @apply font-sans text-gray-200 bg-black antialiased;
+    @apply font-sans text-gray-300 bg-black antialiased;
+    font-size: 1.0625rem; /* Slightly larger base font for desktop readability */
+    line-height: 1.75;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display text-white;
+    letter-spacing: -0.02em;
+  }
+
+  /* Improved paragraph spacing */
+  p {
+    @apply mb-6;
+  }
+
+  p:last-child {
+    @apply mb-0;
+  }
+
+  /* Better link defaults */
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Skip to main content for accessibility */
+  .skip-to-main {
+    @apply absolute left-[-999px] focus:left-4 focus:top-4 focus:z-50 bg-electric-purple-600 text-white px-4 py-2 rounded-lg;
   }
 }
 
 @layer components {
-  /* Button Components - Dark Theme */
+  /* Button Components - Dark Theme with refined styling */
   .btn {
-    @apply inline-flex items-center justify-center px-8 py-4 font-semibold text-base rounded-xl transition-all duration-300 focus:outline-none uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center px-8 py-4 font-semibold text-base rounded-xl transition-all duration-200 focus:outline-none uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed;
+    text-transform: none; /* Remove uppercase for better readability */
+    letter-spacing: 0.025em;
   }
 
   .btn-primary {
-    @apply bg-gradient-purple-electric text-white shadow-purple-subtle hover:shadow-purple-hover hover:-translate-y-0.5 focus-visible:outline-neon-green focus-visible:outline-2 focus-visible:outline-offset-4;
+    @apply bg-gradient-purple-electric text-white shadow-purple-subtle hover:shadow-purple-hover hover:-translate-y-0.5;
+    @apply focus-visible:ring-2 focus-visible:ring-electric-purple-400 focus-visible:ring-offset-4 focus-visible:ring-offset-black;
   }
 
   .btn-secondary {
-    @apply bg-gradient-green-electric text-black font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 focus-visible:outline-neon-green focus-visible:outline-2 focus-visible:outline-offset-4;
+    @apply bg-gradient-green-electric text-black font-bold shadow-md hover:shadow-lg hover:-translate-y-0.5;
+    @apply focus-visible:ring-2 focus-visible:ring-accent-green/50 focus-visible:ring-offset-4 focus-visible:ring-offset-black;
   }
 
   .btn-outline {
-    @apply bg-transparent text-electric-purple-500 border-2 border-electric-purple-500/60 hover:bg-electric-purple-500/10 hover:border-electric-purple-500 focus-visible:outline-neon-green focus-visible:outline-2 focus-visible:outline-offset-4;
+    @apply bg-transparent text-electric-purple-400 border-2 border-electric-purple-500/30 hover:bg-electric-purple-500/10 hover:border-electric-purple-500/50;
+    @apply focus-visible:ring-2 focus-visible:ring-electric-purple-400 focus-visible:ring-offset-4 focus-visible:ring-offset-black;
   }
 
   .btn-ghost {
-    @apply bg-transparent text-electric-purple-500 hover:text-neon-purple transition-all duration-200;
+    @apply bg-transparent text-electric-purple-400 hover:text-electric-purple-300 hover:bg-electric-purple-500/5 transition-all duration-200;
   }
 
-  /* Card Components - Dark Theme */
+  /* Card Components - Dark Theme with subtle refinements */
   .card {
-    @apply bg-gradient-to-br from-dark-800 to-dark-700 rounded-2xl p-6 border border-gray-800 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-gray-700 hover:shadow-xl;
+    @apply bg-dark-800 rounded-2xl p-8 border border-gray-800/50 shadow-md transition-all duration-200;
+    @apply hover:-translate-y-0.5 hover:border-electric-purple-500/20 hover:shadow-lg;
+    background: linear-gradient(to bottom right, rgba(18, 18, 18, 0.95), rgba(26, 26, 26, 0.95));
   }
 
   .card-feature {
     @apply card text-center;
   }
 
-  /* Input Components - Dark Theme */
+  /* Input Components - Dark Theme with better focus states */
   .input {
-    @apply h-14 px-4 bg-dark-800/80 border-2 border-gray-800 rounded-xl text-base text-gray-100 placeholder-gray-500 transition-all duration-300 focus:border-electric-purple-500 focus:bg-dark-800 focus:outline-none;
+    @apply h-14 px-5 bg-dark-800/60 border-2 border-gray-800/50 rounded-xl text-base text-gray-100 placeholder-gray-500;
+    @apply transition-all duration-200 focus:border-electric-purple-500/50 focus:bg-dark-800/80 focus:outline-none;
+    @apply focus:ring-2 focus:ring-electric-purple-500/20;
   }
 
   .input-error {
-    @apply border-red-500 focus:border-red-500;
+    @apply border-red-500/50 focus:border-red-500 bg-red-900/10;
   }
 
   .input-success {
-    @apply border-neon-green focus:border-neon-green;
+    @apply border-accent-green/50 focus:border-accent-green bg-green-900/10;
   }
 
   .label {
@@ -72,7 +103,7 @@
   }
 
   .badge-success {
-    @apply bg-neon-green/15 text-neon-green border border-neon-green/40;
+    @apply bg-accent-green/15 text-accent-green border border-accent-green/40;
   }
 
   .badge-warning {
@@ -80,7 +111,7 @@
   }
 
   .badge-info {
-    @apply bg-electric-purple-500/15 text-electric-purple-400 border border-electric-purple-400/40;
+    @apply bg-accent-purple/15 text-accent-purple border border-accent-purple/40;
   }
 
   /* Section Components */
@@ -95,30 +126,87 @@
 
 @layer utilities {
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-neon-green focus:ring-offset-4 focus:ring-offset-black rounded;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent-purple focus:ring-offset-4 focus:ring-offset-black rounded;
   }
 
+  /* Clean professional gradients */
   .gradient-purple {
-    @apply bg-gradient-purple-electric;
+    background: linear-gradient(135deg, #9333EA 0%, #A855F7 100%);
+  }
+
+  .gradient-purple-subtle {
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, rgba(168, 85, 247, 0.05) 100%);
   }
 
   .gradient-purple-overlay {
-    background: linear-gradient(135deg, rgba(191, 64, 191, 0.6) 0%, rgba(147, 51, 234, 0.4) 30%, rgba(0, 0, 0, 0.9) 100%);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.9) 100%);
   }
 
   .text-balance {
     text-wrap: balance;
   }
 
-  /* Clean text gradient - no glow */
+  /* Clean text gradient - used sparingly */
   .text-gradient-purple {
-    background: linear-gradient(135deg, #BF40BF 0%, #A855F7 50%, #9333EA 100%);
+    background: linear-gradient(135deg, #9333EA 0%, #A855F7 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 800;
+    font-weight: 700;
+  }
+
+  /* Professional shadows - no glow */
+  .shadow-lift {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow-lift-lg {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Content spacing utilities */
+  .content-section {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .content-spacing {
+    @apply space-y-6 md:space-y-8;
+  }
+
+  /* Improved text readability */
+  .text-muted {
+    @apply text-gray-400;
+  }
+
+  .text-body {
+    @apply text-gray-300 leading-relaxed;
+  }
+
+  /* Desktop-optimized layout utilities */
+  .desktop-columns {
+    @apply lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-16;
+  }
+
+  .desktop-sidebar {
+    @apply lg:grid lg:grid-cols-[300px_1fr] lg:gap-12 xl:grid-cols-[350px_1fr];
+  }
+
+  /* Loading states */
+  .loading-spinner {
+    @apply animate-spin rounded-full h-8 w-8 border-b-2 border-electric-purple-500;
+  }
+
+  /* Dividers */
+  .divider {
+    @apply border-t border-gray-800/50 my-8;
+  }
+
+  .divider-thick {
+    @apply border-t-2 border-gray-800/30 my-12;
   }
 }
+
+/* Keep only clean, subtle animations */
 
 /* Animations for reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
